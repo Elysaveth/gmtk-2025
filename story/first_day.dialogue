@@ -1,0 +1,16 @@
+~ start
+
+Well... Here we are. This is supposed to be my school for the next three years
+They say theese are the most important years of my life, where everything begins.
+I'm still not sure what that means...
+- Go to the ceremony
+- Wait for a bit
+	I just don't feel like going yet...
+- I just don't wanna play the game => END
+I guess I should get moving => ceremony
+
+~ ceremony
+
+That was boring enough.[wait=10] I'll just go home
+
+=> END

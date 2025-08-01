@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwa6im4xrq58o"]
+
+[ext_resource type="Script" uid="uid://j6edmp10718w" path="res://base/game.gd" id="1_4pci8"]
+[ext_resource type="Texture2D" uid="uid://d17pml30ijchr" path="res://assets/backgrounds/test-background.jpg" id="1_8xou2"]
+[ext_resource type="PackedScene" uid="uid://cu3n67k7endic" path="res://characters/character.tscn" id="2_4pci8"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_4pci8")
+
+[node name="Backgrounds" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="NewBackground" type="TextureRect" parent="Backgrounds"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CurrentBackground" type="TextureRect" parent="Backgrounds"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8xou2")
+
+[node name="Characters" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Characters"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Character" parent="Characters/Control" instance=ExtResource("2_4pci8")]
+position = Vector2(0, -275)
+scale = Vector2(2, 2)

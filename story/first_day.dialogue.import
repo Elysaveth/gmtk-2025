@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cebj5s2w1a057"
+path="res://.godot/imported/first_day.dialogue-9ed36a41083ecddd153417ca1ed2d21a.tres"
+
+[deps]
+
+source_file="res://story/first_day.dialogue"
+dest_files=["res://.godot/imported/first_day.dialogue-9ed36a41083ecddd153417ca1ed2d21a.tres"]
+
+[params]
+
+defaults=true
