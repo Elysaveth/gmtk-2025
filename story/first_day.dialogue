@@ -1,16 +1,22 @@
 ~ start
 
-Well... Here we are. This is supposed to be my school for the next three years
-They say theese are the most important years of my life, where everything begins.
-I'm still not sure what that means...
+{{character_name}}: Well... Here we are. This is supposed to be my school for the next three years
+{{character_name}}: They say theese are the most important years of my life, where everything begins.
+{{character_name}}: I'm still not sure what that means...
 - Go to the ceremony
 - Wait for a bit
-	I just don't feel like going yet...
+	{{GameState.character_name}}: I just don't feel like going yet...
 - I just don't wanna play the game => END
-I guess I should get moving => ceremony
+{{character_name}}: I guess I should get moving => ceremony
 
 ~ ceremony
 
-That was boring enough.[wait=10] I'll just go home
+{{character_name}}: That was boring enough. [do! wait_for_seconds(4.9)] [wait=5] [do check_waited("Inauguration")] I'll just go home
+
+if check_if_waited("Inauguration")
+	do npc_appears("Shiramine")
+	{{character_present}}: Oh, hello... Sorry, I didn't wanted to bother the atendees.
+	{{character_present}}: Bye
+	do npc_leaves("Shiramine")
 
 => END
