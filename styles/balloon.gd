@@ -14,7 +14,12 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 
 ## See if we are waiting for the player
-var is_waiting_for_input: bool = false
+var is_waiting_for_input: bool = false:
+	set(value):
+		is_waiting_for_input = value
+		continue_mark.visible = value
+	get:
+		return is_waiting_for_input
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
@@ -51,9 +56,16 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+## The talk sound
+@onready var talk_sound: AudioStreamPlayer = $TalkSound
+
+## Next dialogue indicator
+@onready var continue_mark: TextureRect = $Balloon/Continue
+
 
 func _ready() -> void:
 	balloon.hide()
+	continue_mark.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 
 	# If the responses menu doesn't have a next action set, use this one
@@ -174,3 +186,9 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func _on_dialogue_label_spoke(letter: String, _letter_index: int, _speed: float) -> void:
+	if not letter in [".", ",", " "]:
+		talk_sound.pitch_scale = randf_range(1.0, 1.3)
+		talk_sound.play()

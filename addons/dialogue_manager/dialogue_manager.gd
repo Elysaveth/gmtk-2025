@@ -466,12 +466,14 @@ func static_id_to_line_ids(resource: DialogueResource, static_id: String) -> Pac
 func _start_balloon(balloon: Node, resource: DialogueResource, title: String, extra_game_states: Array) -> void:
 	get_current_scene.call().add_child(balloon)
 
+	await get_tree().create_timer(0.4).timeout
 	if balloon.has_method(&"start"):
 		balloon.start(resource, title, extra_game_states)
 	elif balloon.has_method(&"Start"):
 		balloon.Start(resource, title, extra_game_states)
 	else:
 		assert(false, DMConstants.translate(&"runtime.dialogue_balloon_missing_start_method"))
+
 
 	dialogue_started.emit(resource)
 	bridge_dialogue_started.emit(resource)
