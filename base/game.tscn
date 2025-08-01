@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cwa6im4xrq58o"]
 
-[ext_resource type="Script" uid="uid://j6edmp10718w" path="res://base/game.gd" id="1_4pci8"]
+[ext_resource type="Script" path="res://base/game.gd" id="1_4pci8"]
 [ext_resource type="Texture2D" uid="uid://d17pml30ijchr" path="res://assets/backgrounds/test-background.jpg" id="1_8xou2"]
 [ext_resource type="PackedScene" uid="uid://cu3n67k7endic" path="res://characters/character.tscn" id="2_4pci8"]
 

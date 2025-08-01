@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bor1xmmnm7mkc"]
+[gd_scene load_steps=15 format=3 uid="uid://bor1xmmnm7mkc"]
 
 [ext_resource type="Script" uid="uid://c0vxtx55u23ps" path="res://styles/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="FontFile" uid="uid://digob0rxeix4y" path="res://styles/komika_text/KOMTXT__.ttf" id="4_1q6pi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +64,29 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
+[sub_resource type="Theme" id="Theme_2jjg8"]
+MarginContainer/constants/margin_bottom = 0
+MarginContainer/constants/margin_left = 0
+MarginContainer/constants/margin_right = 0
+MarginContainer/constants/margin_top = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q6pi"]
+bg_color = Color(0.508696, 0.00348678, 0.954282, 0.663)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns7vv"]
+bg_color = Color(0.633, 0.433, 1, 0.807)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gaxg"]
+bg_color = Color(0.558315, 0.211136, 0.999986, 0.602)
+
+[sub_resource type="Theme" id="Theme_rim85"]
+Button/fonts/font = ExtResource("4_1q6pi")
+Button/styles/disabled = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/focus = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/hover = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/normal = SubResource("StyleBoxFlat_ns7vv")
+Button/styles/pressed = SubResource("StyleBoxFlat_0gaxg")
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -86,6 +110,7 @@ anchor_bottom = 1.0
 offset_top = -219.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = SubResource("Theme_2jjg8")
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
 clip_children = 2
@@ -135,6 +160,7 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/ResponsesMenu"]
 layout_mode = 2
+theme = SubResource("Theme_rim85")
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
