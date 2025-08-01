@@ -13,6 +13,7 @@ script = ExtResource("1_3xxnu")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="bg_changes" from="." to="Game" method="_on_main_bg_changes"]
 [connection signal="npc_desapawn" from="." to="Game" method="_on_main_npc_desapawn"]
 [connection signal="npc_spawn" from="." to="Game" method="_on_main_npc_spawn"]
 [connection signal="character_selected" from="UI" to="." method="_on_ui_character_selected"]

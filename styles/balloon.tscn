@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c0vxtx55u23ps" path="res://styles/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Theme" uid="uid://dnx6p2cg6wlq" path="res://styles/cuadro.tres" id="2_n7yxb"]
+[ext_resource type="Theme" uid="uid://csfb7veuqsio2" path="res://styles/cuadro.tres" id="2_n7yxb"]
 [ext_resource type="FontFile" uid="uid://hd55fx2n0hst" path="res://styles/komika_text/KOMTXTT_.ttf" id="3_2m3ia"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 [ext_resource type="Texture2D" uid="uid://cer7ednxrokfq" path="res://assets/miscelanea/DownArrowGradient.png" id="4_ns7vv"]
 [ext_resource type="FontFile" uid="uid://df8v0unphjykd" path="res://styles/komika_text/KOMTXTB_.ttf" id="5_n7yxb"]
 [ext_resource type="AudioStream" uid="uid://dvfb34lbkb6p3" path="res://assets/sounds/marble_collision.wav" id="6_0gaxg"]
-[ext_resource type="Theme" uid="uid://7hd3ittwuk8x" path="res://styles/repuesta.tres" id="7_vl4f3"]
+[ext_resource type="Theme" uid="uid://ce5sxgf8ckpd1" path="res://styles/repuesta.tres" id="7_vl4f3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)

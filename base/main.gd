@@ -5,14 +5,18 @@ var character_name: String
 var character_present: String
 var has_waited: bool
 var waited_evets: Array[String]
+var current_background: String
 
 signal npc_spawn(npc_name: String)
 signal npc_desapawn(npc_name: String)
+signal bg_changes(bg_name: String)
 
 func _on_ui_character_selected(username: String) -> void:
 	character_name = username
 	$Game.set_process(true)
 
+
+## NPC interactions
 func npc_appears(npc_name: String) -> void:
 	character_present = npc_name
 	emit_signal("npc_spawn", npc_name)
@@ -20,6 +24,13 @@ func npc_appears(npc_name: String) -> void:
 func npc_leaves(npc_name: String) -> void:
 	character_present = ''
 	emit_signal("npc_desapawn", npc_name)
+
+
+## Background interactions
+func move_to_location(bg_name: String) -> void:
+	current_background = bg_name
+	emit_signal("bg_changes", bg_name)
+
 
 func wait_for_seconds(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
