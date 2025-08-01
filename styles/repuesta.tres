@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://7hd3ittwuk8x"]
+
+[ext_resource type="FontFile" uid="uid://digob0rxeix4y" path="res://styles/komika_text/KOMTXT__.ttf" id="1_fs2ga"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q6pi"]
+bg_color = Color(0.508696, 0.00348678, 0.954282, 0.663)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns7vv"]
+bg_color = Color(0.633, 0.433, 1, 0.807)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gaxg"]
+bg_color = Color(0.558315, 0.211136, 0.999986, 0.602)
+
+[resource]
+Button/fonts/font = ExtResource("1_fs2ga")
+Button/styles/disabled = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/focus = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/hover = SubResource("StyleBoxFlat_1q6pi")
+Button/styles/normal = SubResource("StyleBoxFlat_ns7vv")
+Button/styles/pressed = SubResource("StyleBoxFlat_0gaxg")
