@@ -178,6 +178,7 @@ modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
 theme_override_fonts/normal_font = ExtResource("3_2m3ia")
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "Character"
 fit_content = true
@@ -186,8 +187,9 @@ scroll_active = false
 [node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 6
 theme_override_fonts/normal_font = ExtResource("5_n7yxb")
+theme_override_font_sizes/normal_font_size = 30
 text = "Dialogue..."
 seconds_per_step = 0.03
 
@@ -216,6 +218,7 @@ theme = ExtResource("7_vl4f3")
 text = "Response example"
 
 [node name="Continue" type="TextureRect" parent="Balloon"]
+modulate = Color(0.699, 0.402, 0.986, 0.972)
 layout_mode = 0
 offset_left = 1190.0
 offset_top = 670.0
