@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://bor1xmmnm7mkc"]
+[gd_scene load_steps=19 format=3 uid="uid://bor1xmmnm7mkc"]
 
 [ext_resource type="Script" uid="uid://c0vxtx55u23ps" path="res://styles/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="FontFile" uid="uid://digob0rxeix4y" path="res://styles/komika_text/KOMTXT__.ttf" id="4_1q6pi"]
 [ext_resource type="AudioStream" uid="uid://dvfb34lbkb6p3" path="res://assets/sounds/marble_collision.wav" id="4_1q6pi"]
 [ext_resource type="Texture2D" uid="uid://cer7ednxrokfq" path="res://assets/miscelanea/DownArrowGradient.png" id="4_ns7vv"]
 
@@ -82,7 +81,7 @@ bg_color = Color(0.633, 0.433, 1, 0.807)
 bg_color = Color(0.558315, 0.211136, 0.999986, 0.602)
 
 [sub_resource type="Theme" id="Theme_rim85"]
-Button/fonts/font = ExtResource("4_1q6pi")
+Button/fonts/font = null
 Button/styles/disabled = SubResource("StyleBoxFlat_1q6pi")
 Button/styles/focus = SubResource("StyleBoxFlat_1q6pi")
 Button/styles/hover = SubResource("StyleBoxFlat_1q6pi")
@@ -100,7 +99,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1120, -0.25, 0, 0.25, 0, 1120, -0.25, 0, 0.25, 0, 1120, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(1100, -0.25, 0, 0.25, 0, 1100, -0.25, 0, 0.25, 0, 1100, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 tracks/1/type = "bezier"
@@ -111,7 +110,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(630, -0.25, 0, 0.25, 0, 650, -0.25, 0, 0.25, 0, 630, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(600, -0.25, 0, 0.25, 0, 610, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
@@ -166,7 +165,10 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -219.0
+offset_left = 30.0
+offset_top = -270.0
+offset_right = -60.0
+offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_2jjg8")
@@ -225,10 +227,10 @@ text = "Response example"
 
 [node name="Continue" type="TextureRect" parent="Balloon"]
 layout_mode = 0
-offset_left = 1120.0
-offset_top = 648.198
-offset_right = 1240.0
-offset_bottom = 768.198
+offset_left = 1190.0
+offset_top = 670.0
+offset_right = 1310.0
+offset_bottom = 790.0
 texture = ExtResource("4_ns7vv")
 expand_mode = 1
 
