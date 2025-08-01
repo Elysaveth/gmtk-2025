@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://bor1xmmnm7mkc"]
+[gd_scene load_steps=14 format=3 uid="uid://bor1xmmnm7mkc"]
 
 [ext_resource type="Script" uid="uid://c0vxtx55u23ps" path="res://styles/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
+[ext_resource type="AudioStream" uid="uid://dvfb34lbkb6p3" path="res://assets/sounds/marble_collision.wav" id="4_1q6pi"]
+[ext_resource type="Texture2D" uid="uid://cer7ednxrokfq" path="res://assets/miscelanea/DownArrowGradient.png" id="4_ns7vv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -63,6 +65,63 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 
+[sub_resource type="Animation" id="Animation_1q6pi"]
+resource_name = "ContinueMovement"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1120, -0.25, 0, 0.25, 0, 1120, -0.25, 0, 0.25, 0, 1120, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(630, -0.25, 0, 0.25, 0, 650, -0.25, 0, 0.25, 0, 630, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="Animation" id="Animation_ns7vv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1190, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(670, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0gaxg"]
+_data = {
+&"ContinueMovement": SubResource("Animation_1q6pi"),
+&"RESET": SubResource("Animation_ns7vv")
+}
+
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_36de5")
@@ -113,6 +172,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
+seconds_per_step = 0.03
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -137,5 +197,25 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 text = "Response example"
 
+[node name="Continue" type="TextureRect" parent="Balloon"]
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 648.198
+offset_right = 1240.0
+offset_bottom = 768.198
+texture = ExtResource("4_ns7vv")
+expand_mode = 1
+
+[node name="UpAndDown" type="AnimationPlayer" parent="Balloon/Continue"]
+libraries = {
+&"": SubResource("AnimationLibrary_0gaxg")
+}
+autoplay = "ContinueMovement"
+
+[node name="TalkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1q6pi")
+volume_db = -5.0
+
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
