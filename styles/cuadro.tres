@@ -1,7 +1,10 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://csfb7veuqsio2"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://csfb7veuqsio2"]
+
+[ext_resource type="FontFile" uid="uid://2dnhr6v0qdgf" path="res://styles/komika_text/KOMTXTK_.ttf" id="1_5a63b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prprc"]
 bg_color = Color(0.018, 0, 0.122, 0.829)
 
 [resource]
+default_font = ExtResource("1_5a63b")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_prprc")
