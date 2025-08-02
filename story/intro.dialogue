@@ -10,6 +10,7 @@ do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 {{MC}}: I guess I should get moving
 => ceremony
 
+
 ~ ceremony
 do move_to_location("School_Hall") [wait(2 * transition_time + 1)]
 
@@ -22,6 +23,7 @@ if check_if_waited("Inauguration")
 	do npc_leaves("Shiramine")
 do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 => clubs_intro
+
 
 ~ clubs_intro
 {{MC}}: Oh, great. Now I have to survive the club recruitment parade. Forgot about that. [wait=1]

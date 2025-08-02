@@ -4,5 +4,7 @@
 
 [node name="Character" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="CurrentSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_54qew")
+
+[node name="NewSprite" type="Sprite2D" parent="."]

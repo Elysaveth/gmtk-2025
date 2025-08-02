@@ -26,33 +26,57 @@ func _process(_delta: float) -> void:
 
 func _on_main_npc_spawn(npc_name: String) -> void:
 	characters_present.append(npc_name)
+	var texture := load("res://assets/characters/%s.jpg" % npc_name)
+	if texture:
+		$Characters/Control/Character/CurrentSprite.texture = texture
+	else:
+		$Characters/Control/Character/CurrentSprite.texture = load("res://assets/characters/test-character.png")
+	$Characters/Control/Character/CurrentSprite.modulate = Color(1, 1, 1, 0)
 	$Characters.show()
+	var a := 0.0
+	while a < 1.0:
+		$Characters/Control/Character/CurrentSprite.modulate = Color(1, 1, 1, a)
+		a += (transition_time / 100.0)
+		await get_tree().create_timer(transition_time / 200.0).timeout
 
 
 func _on_main_npc_desapawn(npc_name: String) -> void:
 	characters_present.erase(npc_name)
-	$Characters.show()
+	var a := 1.0
+	while a < 0.0:
+		$Characters/Control/Character/CurrentSprite.modulate = Color(1, 1, 1, a)
+		a += (transition_time / 100.0)
+		await get_tree().create_timer(transition_time / 200.0).timeout
+	$Characters.hide()
 
 
 func _on_main_bg_changes(bg_name: String) -> void:
 	var baloon = balloon.get_child(0)
 	var a := 1.0
-	while a > 0:
+	while a > 0.0:
 		baloon.modulate = Color(1, 1, 1, a)
-		a -= (transition_time/ 50)
-		await get_tree().create_timer(transition_time / 500).timeout
-	await get_tree().create_timer(transition_time / 2).timeout
-	$Backgrounds/NewBackground.texture = load("res://assets/backgrounds/%s.jpg" % bg_name)
-	a = 1
-	while a > 0:
+		a -= (transition_time/ 50.0)
+		await get_tree().create_timer(transition_time / 200.0).timeout
+	await get_tree().create_timer(transition_time / 2.0).timeout
+	var texture := load("res://assets/backgrounds/%s.jpg" % bg_name)
+	if texture:
+		$Backgrounds/NewBackground.texture = texture
+	else:
+		$Backgrounds/NewBackground.texture = load("res://assets/backgrounds/Purple.jpg")
+		
+	a = 1.0
+	while a > 0.0:
 		$Backgrounds/CurrentBackground.modulate = Color(1, 1, 1, a)
 		a -= (transition_time / 100.0)
 		await get_tree().create_timer(transition_time / 100.0).timeout
-	$Backgrounds/CurrentBackground.texture = load("res://assets/backgrounds/%s.jpg" % bg_name)
+	if texture:
+		$Backgrounds/CurrentBackground.texture = texture
+	else:
+		$Backgrounds/CurrentBackground.texture = load("res://assets/backgrounds/Purple.jpg")
 	$Backgrounds/CurrentBackground.modulate = Color(1, 1, 1, 1)
-	await get_tree().create_timer(transition_time / 2).timeout
-	a = 0
-	while a < 1:
+	await get_tree().create_timer(transition_time / 2.0).timeout
+	a = 0.0
+	while a < 1.0:
 		baloon.modulate = Color(1, 1, 1, a)
-		a += (transition_time/ 50)
-		await get_tree().create_timer(transition_time / 50).timeout
+		a += (transition_time/ 50.0)
+		await get_tree().create_timer(transition_time / 200.0).timeout
