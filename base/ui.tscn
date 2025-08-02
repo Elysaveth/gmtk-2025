@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0kejn0j1swl6"]
+[gd_scene load_steps=12 format=3 uid="uid://d0kejn0j1swl6"]
 
 [ext_resource type="Script" uid="uid://c6e0ton7l47hf" path="res://base/ui.gd" id="1_j86kx"]
 [ext_resource type="Theme" uid="uid://csfb7veuqsio2" path="res://styles/cuadro.tres" id="2_fwvvm"]
 [ext_resource type="Theme" uid="uid://ce5sxgf8ckpd1" path="res://styles/repuesta.tres" id="3_ypc04"]
+[ext_resource type="FontFile" uid="uid://hd55fx2n0hst" path="res://styles/komika_text/KOMTXTT_.ttf" id="4_ypc04"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
 
@@ -180,6 +181,9 @@ text = "Infinite Lifes"
 custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = ExtResource("2_fwvvm")
+theme_override_fonts/font = ExtResource("4_ypc04")
+theme_override_font_sizes/font_size = 25
 placeholder_text = "Character Name"
 alignment = 1
 max_length = 16
