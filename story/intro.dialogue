@@ -1,0 +1,33 @@
+~ start
+do move_to_location("School_Front") [wait(2 * transition_time + 1)]
+
+{{MC}}: Well... Here we are. This is supposed to be my school for the next three years
+{{MC}}: They say theese are the most important years of my life, where everything begins.
+{{MC}}: I'm still not sure what that means...
+- Go to the ceremony
+- Wait for a bit
+	{{MC}}: I just don't feel like going yet... [wait=2]
+{{MC}}: I guess I should get moving
+=> ceremony
+
+~ ceremony
+do move_to_location("School_Hall") [wait(2 * transition_time + 1)]
+
+{{MC}}: That was boring enough.[do! wait_for_seconds(5)] [wait=5] [do check_waited("Inauguration")] I'll just go home
+
+if check_if_waited("Inauguration")
+	do npc_appears("Shiramine")
+	Shiramine: Oh, hello... Sorry, I didn't wanted to bother the atendees.
+	Shiramine: Bye 
+	do npc_leaves("Shiramine")
+do move_to_location("School_Front") [wait(2 * transition_time + 1)]
+=> clubs_intro
+
+~ clubs_intro
+{{MC}}: Oh, great. Now I have to survive the club recruitment parade. Forgot about that. [wait=1]
+{{MC}}: [wait=1] OMG, that was something alright. Now what do I do with all this?
+do npc_appears("Club_flyers")
+{{MC}}: Maybe I could join one of the clubs for a change...
+do npc_leaves("Club_flyers")
+{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait=0.5] I'll just go home.
+=> END

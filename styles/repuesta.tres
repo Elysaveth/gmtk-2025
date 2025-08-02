@@ -3,10 +3,10 @@
 [ext_resource type="FontFile" uid="uid://digob0rxeix4y" path="res://styles/komika_text/KOMTXT__.ttf" id="1_fs2ga"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q6pi"]
-bg_color = Color(0.508696, 0.00348678, 0.954282, 0.663)
+bg_color = Color(0.450587, 0.2684, 0.61, 0.662745)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ns7vv"]
-bg_color = Color(0.633, 0.433, 1, 0.807)
+bg_color = Color(0.283275, 0.1935, 0.45, 0.807843)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gaxg"]
 bg_color = Color(0.558315, 0.211136, 0.999986, 0.602)

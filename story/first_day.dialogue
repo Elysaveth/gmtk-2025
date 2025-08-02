@@ -5,20 +5,20 @@
 {{character_name}}: I'm still not sure what that means...
 - Go to the ceremony
 - Wait for a bit
-	{{character_name}}: I just don't feel like going yet...
-- I just don't wanna play the game => END
+	{{character_name}}: I just don't feel like going yet... [wait=2]
 {{character_name}}: I guess I should get moving => ceremony
+=> END
 
 ~ ceremony
 do move_to_location("School_Hall")
-[wait=1]
 
-{{character_name}}: That was boring enough. [do! wait_for_seconds(5)] [wait=5] [do check_waited("Inauguration")] I'll just go home
+{{character_name}}: [wait={{transition_time + 2}}] That was boring enough. [do! wait_for_seconds(5)] [wait=5] [do check_waited("Inauguration")] I'll just go home
 
 if check_if_waited("Inauguration")
 	do npc_appears("Shiramine")
-	{{character_present}}: Oh, hello... Sorry, I didn't wanted to bother the atendees.
-	{{character_present}}: Bye
+	Shiramine: Oh, hello... Sorry, I didn't wanted to bother the atendees.
+	Shiramine: Bye
 	do npc_leaves("Shiramine")
-
 => END
+
+~

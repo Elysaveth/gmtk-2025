@@ -1,18 +1,22 @@
 extends Node2D
 
 var current_scene: String
-var character_name: String
+var MC: String
 var character_present: String
 var has_waited: bool
 var waited_evets: Array[String]
 var current_background: String
+@export var transition_time: float = 2.0
 
 signal npc_spawn(npc_name: String)
 signal npc_desapawn(npc_name: String)
 signal bg_changes(bg_name: String)
 
+func _ready() -> void:
+	$Game.transition_time = transition_time
+
 func _on_ui_character_selected(username: String) -> void:
-	character_name = username
+	MC = username
 	$Game.set_process(true)
 
 
@@ -31,6 +35,8 @@ func move_to_location(bg_name: String) -> void:
 	current_background = bg_name
 	emit_signal("bg_changes", bg_name)
 
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout
 
 func wait_for_seconds(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout

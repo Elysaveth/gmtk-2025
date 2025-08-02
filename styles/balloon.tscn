@@ -147,6 +147,7 @@ grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
+light_mask = 0
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -161,13 +162,17 @@ grow_vertical = 0
 theme = SubResource("Theme_2jjg8")
 
 [node name="PanelContainer" type="PanelContainer" parent="Balloon/MarginContainer"]
-clip_children = 2
 layout_mode = 2
 mouse_filter = 1
 theme = ExtResource("2_n7yxb")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer"]
+use_parent_material = true
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -184,14 +189,20 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="DialogueLabel" parent="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_fonts/normal_font = ExtResource("5_n7yxb")
 theme_override_font_sizes/normal_font_size = 30
-text = "Dialogue..."
-seconds_per_step = 0.03
+seconds_per_step = 0.04
+pause_at_characters = ",.?!"
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
@@ -201,14 +212,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -420.0
-offset_top = -168.0
-offset_bottom = 143.0
+offset_left = -474.0
+offset_top = -232.0
+offset_right = -54.0
+offset_bottom = 79.0
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 2
-alignment = 1
+alignment = 2
 script = ExtResource("3_72ixx")
 response_template = NodePath("ResponseExample")
 
@@ -218,7 +230,7 @@ theme = ExtResource("7_vl4f3")
 text = "Response example"
 
 [node name="Continue" type="TextureRect" parent="Balloon"]
-modulate = Color(0.699, 0.402, 0.986, 0.972)
+modulate = Color(1, 0.62, 1, 1)
 layout_mode = 0
 offset_left = 1190.0
 offset_top = 670.0
@@ -226,6 +238,7 @@ offset_right = 1310.0
 offset_bottom = 790.0
 texture = ExtResource("4_ns7vv")
 expand_mode = 1
+flip_h = true
 
 [node name="UpAndDown" type="AnimationPlayer" parent="Balloon/Continue"]
 libraries = {
@@ -235,8 +248,8 @@ autoplay = "ContinueMovement"
 
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0gaxg")
-volume_db = -5.0
+bus = &"Talking"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
+[connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
