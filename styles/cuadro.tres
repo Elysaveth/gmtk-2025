@@ -3,7 +3,11 @@
 [ext_resource type="FontFile" uid="uid://2dnhr6v0qdgf" path="res://styles/komika_text/KOMTXTK_.ttf" id="1_5a63b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prprc"]
-bg_color = Color(0.018, 0, 0.122, 0.829)
+bg_color = Color(0.018, 0, 0.122, 0.884)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [resource]
 default_font = ExtResource("1_5a63b")

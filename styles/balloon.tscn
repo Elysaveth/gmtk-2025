@@ -248,7 +248,6 @@ autoplay = "ContinueMovement"
 
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0gaxg")
-bus = &"Talking"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
