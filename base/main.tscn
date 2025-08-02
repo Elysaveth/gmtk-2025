@@ -12,7 +12,6 @@ script = ExtResource("1_3xxnu")
 [node name="UI" parent="." instance=ExtResource("1_wbdts")]
 size_flags_horizontal = 3
 size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
 
 [connection signal="bg_changes" from="." to="Game" method="_on_main_bg_changes"]
 [connection signal="npc_desapawn" from="." to="Game" method="_on_main_npc_desapawn"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0kejn0j1swl6"]
+[gd_scene load_steps=13 format=3 uid="uid://d0kejn0j1swl6"]
 
 [ext_resource type="Script" uid="uid://c6e0ton7l47hf" path="res://base/ui.gd" id="1_j86kx"]
 [ext_resource type="Theme" uid="uid://csfb7veuqsio2" path="res://styles/cuadro.tres" id="2_fwvvm"]
 [ext_resource type="Theme" uid="uid://ce5sxgf8ckpd1" path="res://styles/repuesta.tres" id="3_ypc04"]
+[ext_resource type="Theme" uid="uid://dr3mcubbhklpl" path="res://styles/pause.tres" id="4_ykym3"]
 [ext_resource type="FontFile" uid="uid://hd55fx2n0hst" path="res://styles/komika_text/KOMTXTT_.ttf" id="4_ypc04"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fyqef"]
@@ -108,10 +109,12 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -120.0
-offset_bottom = 40.0
+offset_left = -140.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 60.0
 grow_horizontal = 0
-theme = ExtResource("3_ypc04")
+theme = ExtResource("4_ykym3")
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="Menus/BaseMenu/InGame"]
@@ -268,11 +271,8 @@ autoplay = true
 [node name="Pause" type="Control" parent="Menus/BaseMenu"]
 visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="GrayOut" type="ColorRect" parent="Menus/BaseMenu/Pause"]
 layout_mode = 1
