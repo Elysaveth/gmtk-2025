@@ -234,21 +234,18 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_ypc04")
 text = "Play"
-flat = true
 
 [node name="Settings" type="Button" parent="Menus/BaseMenu/Main/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_ypc04")
 text = "Settings"
-flat = true
 
 [node name="Quit" type="Button" parent="Menus/BaseMenu/Main/Buttons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_ypc04")
 text = "Quit"
-flat = true
 
 [node name="FadeOut" type="AnimationPlayer" parent="Menus/BaseMenu/Main"]
 libraries = {
