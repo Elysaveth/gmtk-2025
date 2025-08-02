@@ -145,6 +145,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_qq3yp")
+metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon"]
 light_mask = 0
@@ -231,14 +232,20 @@ text = "Response example"
 
 [node name="Continue" type="TextureRect" parent="Balloon"]
 modulate = Color(1, 0.62, 1, 1)
-layout_mode = 0
-offset_left = 1190.0
-offset_top = 670.0
-offset_right = 1310.0
-offset_bottom = 790.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -120.0
+grow_horizontal = 0
+grow_vertical = 0
 texture = ExtResource("4_ns7vv")
 expand_mode = 1
 flip_h = true
+metadata/_edit_use_anchors_ = true
 
 [node name="UpAndDown" type="AnimationPlayer" parent="Balloon/Continue"]
 libraries = {

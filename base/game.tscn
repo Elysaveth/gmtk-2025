@@ -39,6 +39,7 @@ offset_top = -40.0
 offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="Characters/Control" instance=ExtResource("2_4pci8")]
 position = Vector2(0, -275)
