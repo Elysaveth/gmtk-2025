@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://td0i3o0e0th1"
-path="res://.godot/imported/Clubs_hall.jpg-83021ad651b64e6e30a57b9225b9f433.ctex"
+uid="uid://dkynv026em2jc"
+path="res://.godot/imported/Clubs_Hall.jpg-eaf382dd6e61dd8b37db97191a9e1699.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/Clubs_hall.jpg"
-dest_files=["res://.godot/imported/Clubs_hall.jpg-83021ad651b64e6e30a57b9225b9f433.ctex"]
+source_file="res://assets/backgrounds/Clubs_Hall.jpg"
+dest_files=["res://.godot/imported/Clubs_Hall.jpg-eaf382dd6e61dd8b37db97191a9e1699.ctex"]
 
 [params]
 
