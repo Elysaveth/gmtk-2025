@@ -12,7 +12,7 @@ bg_color = Color(0.283275, 0.1935, 0.45, 0.807843)
 bg_color = Color(0.558315, 0.211136, 0.999986, 0.602)
 
 [resource]
-Button/font_sizes/font_size = 20
+Button/font_sizes/font_size = 25
 Button/fonts/font = ExtResource("1_fs2ga")
 Button/styles/disabled = SubResource("StyleBoxFlat_1q6pi")
 Button/styles/focus = SubResource("StyleBoxFlat_1q6pi")
