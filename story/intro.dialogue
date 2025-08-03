@@ -3,7 +3,7 @@ import "res://story/clubs_building.dialogue" as clubs_building
 import "res://story/go_home.dialogue" as go_home
 
 ~ start
-do move_to_location("School_Front") [wait(2 * transition_time + 1)]
+do move_to_location("School_Entrance") [wait(2 * transition_time + 1)]
 
 {{MC}}: Well... Here we are. This is supposed to be my school for the next three years
 {{MC}}: They say these are the most important years of my life, where everything begins.
@@ -28,9 +28,10 @@ if intro_passed:
 if check_if_waited("Inauguration")
 	do npc_appears("Sawatari")
 	Sawatari: Oh, hello... Sorry, I didn't wanted to bother the atendees.
-	Sawatari: Bye 
+	Sawatari: ...I'm with the photography club. [wait=0.2]You're welcome to join if you're interested
+	Sawatari: Well... uhm, bye
 	do npc_leaves("Sawatari")
-do move_to_location("School_Front") [wait(2 * transition_time + 1)]
+do move_to_location("School_Entrance") [wait(2 * transition_time + 1)]
 => clubs_intro
 
 
