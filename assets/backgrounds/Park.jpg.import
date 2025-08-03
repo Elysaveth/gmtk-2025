@@ -2,16 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<<< HEAD:assets/backgrounds/Park.jpg.import
 uid="uid://c02nqdx0pb4q7"
 path="res://.godot/imported/Park.jpg-bef9afb297c840564b8d3607304bb68f.ctex"
+========
+uid="uid://bdd0i7c8x681w"
+path="res://.godot/imported/Class_Back.jpg-6c393540b778468ba55dabfaf996be82.ctex"
+>>>>>>>> f02a299 (started story):assets/backgrounds/Class_Back.jpg.import
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
+<<<<<<<< HEAD:assets/backgrounds/Park.jpg.import
 source_file="res://assets/backgrounds/Park.jpg"
 dest_files=["res://.godot/imported/Park.jpg-bef9afb297c840564b8d3607304bb68f.ctex"]
+========
+source_file="res://assets/backgrounds/Class_Back.jpg"
+dest_files=["res://.godot/imported/Class_Back.jpg-6c393540b778468ba55dabfaf996be82.ctex"]
+>>>>>>>> f02a299 (started story):assets/backgrounds/Class_Back.jpg.import
 
 [params]
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bgvktlibsg5vx"
+path="res://.godot/imported/clubs_building.dialogue-dfb0cd49b9bac117db1ec9e746b61f26.tres"
+
+[deps]
+
+source_file="res://story/clubs_building.dialogue"
+dest_files=["res://.godot/imported/clubs_building.dialogue-dfb0cd49b9bac117db1ec9e746b61f26.tres"]
+
+[params]
+
+defaults=true
