@@ -8,6 +8,7 @@ var waited_evets: Array[String]
 var current_background: String
 var patience: float = 1
 var sound_length: float
+@export var intro_passed: bool = false
 @export var transition_time: float = 2.0
 
 signal npc_spawn(npc_name: String)
@@ -31,7 +32,6 @@ func _on_ui_debug_mode_on(scene: String) -> void:
 	MC = "DEBUG"
 	$Game.debug_mode = true
 	var scene_name = scene.split("/")
-	print(scene_name[0])
 	$Game.current_dialogue = "res://story/%s.dialogue" % scene_name[0]
 	if len(scene_name) == 2:
 		$Game.current_scene = scene_name[1]

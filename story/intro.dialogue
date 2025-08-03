@@ -32,10 +32,26 @@ do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 ~ clubs_intro
 {{MC}}: Oh, great. Now I have to survive the club recruitment parade. Forgot about that. [wait=1]
 {{MC}}: [wait=1] OMG, that was something alright. Now what do I do with all this?
-do npc_appears("Club_flyers")
+do npc_appears("Saeko")
 {{MC}}: Maybe I could join one of the clubs for a change...
+if intro_passed:
+	- Gardening Club
+		{{MC}}: Something
+	- Music Club
+		{{MC}}: Something
+	- Track Club
+		{{MC}}: Something
+	- Basket Club
+		{{MC}}: Something
+	- Videogames Club
+		{{MC}}: Something
+	- Photography Club [if check_if_waited("Inauguration")]
+		{{MC}}: Something
+	- Nah...
+		{{MC}}: Who am I kidding? I wouldn't show up anyway. =>< go_home/standard
+else:
+	{{MC}}: Who am I kidding? I wouldn't show up anyway. =>< go_home/standard
 do npc_leaves("Club_flyers")
-{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait={{patience}}] =>< go_home/standard
 => second_day
 
 ~ second_day
@@ -43,25 +59,28 @@ do move_to_location("Class_Front") [wait(2 * transition_time + 1)]
 do play_sound("School_Bell") [wait(sound_length)]
 {{MC}}: Finally... Great job today, me! I didn't fall asleep for the entirety of the homeroom
 {{MC}}: Although I wish I haven't heard about the evaluation exam next week. Who does an exam on the seconf week of school? Seriously...[do! wait_for_seconds(5)] [wait=5] [do check_waited("After_First_Class")] 
-if check_if_waited("Inauguration")
+if check_if_waited("After_First_Class")
 	Nakayama: Well then... Who's up for karaoke!?
 	{{MC}}: (we just found the party animal of the class)
 	Classmate: Are you kidding? It's first day
 	Nakayama: Precisely
 {{MC}}: I should get moving. Where to, tho?
-- Club's Building
-	{{MC}}: Maybe I should join a club after all =>< clubs_building/intro
-- Student Council
-	{{MC}}: I should with the student council =>< student_council_intro
-- Library
-	{{MC}}: I mean. I know it's just an evaluation, but I don't wanna score low to begin with =>< library_intro
-- Park
-	{{MC}}: I feel like taking a walk =>< park/intro
-- Piano Classes
-	{{MC}}: Okay, crazy proposal. What if I started playing piano? =>< piano_classes_intro
-- Join the Karaoke plan [if check_if_waited("Inauguration")]
-	{{MC}}: Best way to start: by making friends =>< making_friends
-- Go Home
+if intro_passed:
+	- Club's Building
+		{{MC}}: Maybe I should join a club after all =>< clubs_building/intro
+	- Student Council
+		{{MC}}: I should with the student council =>< student_council_intro
+	- Library
+		{{MC}}: I mean. I know it's just an evaluation, but I don't wanna score low to begin with =>< library_intro
+	- Park
+		{{MC}}: I feel like taking a walk =>< park/intro
+	- Piano Classes
+		{{MC}}: Okay, crazy proposal. What if I started playing piano? =>< piano_classes_intro
+	- Join the Karaoke plan [if check_if_waited("After_First_Class")]
+		{{MC}}: Best way to start: by making friends =>< making_friends
+	- Go Home
+		{{MC}}: Ol' trusty "go home". Never fails. =>< go_home/standard
+else:
 	{{MC}}: Ol' trusty "go home". Never fails. =>< go_home/standard
 => third_day
 

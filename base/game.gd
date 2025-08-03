@@ -37,7 +37,7 @@ func _process(_delta: float) -> void:
 
 func _on_main_npc_spawn(npc_name: String) -> void:
 	characters_present.append(npc_name)
-	var texture := load("res://assets/characters/%s.jpg" % npc_name)
+	var texture := load("res://assets/characters/%s.png" % npc_name)
 	if texture:
 		$Characters/Control/Character/CurrentSprite.texture = texture
 	else:
