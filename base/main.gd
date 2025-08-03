@@ -82,10 +82,11 @@ func play_sound(sound: String) -> void:
 	
 func play_music(song: String = "random") -> void:
 	if song == "random":
-		pass # List songs from folder and select one name at random
-	var song_file := load("res://assets/sounds/%s.mp3" % song)
-	$Music.stream = 
-
+		var song_list := ["Music1", "Music_Guitar1", "Music_Guitar2", "Music_Guitar3", "Music_Piano1", "Music_Piano2"]
+		song = song_list[randi_range(0, len(song_list) -1)]
+	var song_file := load("res://assets/music/%s.mp3" % song)
+	$Music.stream = song_file
+	$Music.play()
 
 ## Helper methods
 func back_to_the_past() -> void:

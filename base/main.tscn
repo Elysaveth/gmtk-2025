@@ -87,7 +87,6 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_3xxnu")
-transition_time = null
 
 [node name="Game" parent="." instance=ExtResource("1_f47da")]
 intro_dialogue = ExtResource("3_5e13l")
@@ -105,7 +104,6 @@ metadata/_custom_type_script = "uid://ckvee7iqc8brt"
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
 
 [node name="Intro" type="Node2D" parent="."]
 visibility_layer = 0
