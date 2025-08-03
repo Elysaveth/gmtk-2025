@@ -25,6 +25,7 @@ func _on_ui_character_selected(username: String) -> void:
 	$Game/Backgrounds/CurrentBackground.texture = load("res://assets/backgrounds/Purple.jpg")
 	$Game.run_dialog = true
 	$Game.set_process(true)
+	play_music()
 
 func _on_ui_debug_mode_on(scene: String) -> void:
 	MC = "DEBUG"
@@ -71,13 +72,20 @@ func check_if_waited(scene: String) -> bool:
 		return true
 	return false
 
-
+## Audio interactions
 func play_sound(sound: String) -> void:
 	$Sounds.stop()
 	var sound_file := load("res://assets/sounds/%s.wav" % sound)
 	$Sounds.stream = sound_file
 	sound_length = $Sounds.stream.get_length()
 	$Sounds.play()
+	
+func play_music(song: String = "random") -> void:
+	if song == "random":
+		pass # List songs from folder and select one name at random
+	var song_file := load("res://assets/sounds/%s.mp3" % song)
+	$Music.stream = 
+
 
 ## Helper methods
 func back_to_the_past() -> void:
@@ -86,3 +94,7 @@ func back_to_the_past() -> void:
 
 func _on_ui_main_menu() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_music_finished() -> void:
+	play_music()
