@@ -4,7 +4,7 @@ var current_scene: String
 var characters_present: Array[String]
 var run_dialog: bool = true
 var transition_time: float
-@export var current_dialogue: DialogueResource
+@export var intro_dialogue: DialogueResource
 @export var transition_speed: float = 0.02
 
 var balloon: Node
@@ -12,7 +12,7 @@ var balloon: Node
 func _ready() -> void:
 	if characters_present.is_empty():
 		$Characters.hide()
-	current_dialogue = preload("res://story/intro.dialogue")
+	intro_dialogue = preload("res://story/intro.dialogue")
 	set_process(false)
 
 func _process(_delta: float) -> void:
@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 	if run_dialog:
 		run_dialog = false
 		await get_tree().create_timer(1).timeout
-		balloon = DialogueManager.show_dialogue_balloon(current_dialogue)
+		balloon = DialogueManager.show_dialogue_balloon(intro_dialogue)
 
 
 func _on_main_npc_spawn(npc_name: String) -> void:
@@ -80,3 +80,7 @@ func _on_main_bg_changes(bg_name: String) -> void:
 		baloon.modulate = Color(1, 1, 1, a)
 		a += (transition_time/ 50.0)
 		await get_tree().create_timer(transition_time / 200.0).timeout
+
+
+func _on_main_back_to_past(time: TimeObject) -> void:
+	balloon = DialogueManager.show_dialogue_balloon(intro_dialogue)

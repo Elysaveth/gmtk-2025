@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7wnfmneub2g8"]
+[gd_scene load_steps=8 format=3 uid="uid://c7wnfmneub2g8"]
 
 [ext_resource type="Script" uid="uid://itih2hwvbl4o" path="res://base/main.gd" id="1_3xxnu"]
 [ext_resource type="PackedScene" uid="uid://cwa6im4xrq58o" path="res://base/game.tscn" id="1_f47da"]
 [ext_resource type="PackedScene" uid="uid://d0kejn0j1swl6" path="res://base/ui.tscn" id="1_wbdts"]
+[ext_resource type="Resource" uid="uid://ddqvbobqhvems" path="res://story/intro.dialogue" id="3_5e13l"]
 [ext_resource type="Script" uid="uid://ckvee7iqc8brt" path="res://resources/time_system.gd" id="4_pex66"]
 [ext_resource type="Script" uid="uid://cpbl1y7cnrsx8" path="res://resources/time_object.gd" id="5_5e13l"]
 
@@ -20,6 +21,7 @@ metadata/_custom_type_script = "uid://cpbl1y7cnrsx8"
 script = ExtResource("1_3xxnu")
 
 [node name="Game" parent="." instance=ExtResource("1_f47da")]
+intro_dialogue = ExtResource("3_5e13l")
 
 [node name="UI" parent="." instance=ExtResource("1_wbdts")]
 size_flags_horizontal = 3
@@ -30,6 +32,10 @@ script = ExtResource("4_pex66")
 time = SubResource("Resource_jo60l")
 metadata/_custom_type_script = "uid://ckvee7iqc8brt"
 
+[node name="Sounds" type="AudioStreamPlayer" parent="."]
+
+[connection signal="back_to_past" from="." to="Game" method="_on_main_back_to_past"]
+[connection signal="back_to_past" from="." to="UI" method="_on_main_back_to_past"]
 [connection signal="bg_changes" from="." to="Game" method="_on_main_bg_changes"]
 [connection signal="npc_desapawn" from="." to="Game" method="_on_main_npc_desapawn"]
 [connection signal="npc_spawn" from="." to="Game" method="_on_main_npc_spawn"]

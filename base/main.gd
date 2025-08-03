@@ -6,7 +6,8 @@ var character_present: String
 var has_waited: bool
 var waited_evets: Array[String]
 var current_background: String
-var patience_for_choices: float
+var patience: float = 1
+var sound_length: float
 @export var transition_time: float = 2.0
 
 signal npc_spawn(npc_name: String)
@@ -56,6 +57,13 @@ func check_if_waited(scene: String) -> bool:
 		return true
 	return false
 
+
+func play_sound(sound: String) -> void:
+	$Sounds.stop()
+	var sound_file := load("res://assets/sounds/%s.wav" % sound)
+	$Sounds.stream = sound_file
+	sound_length = $Sounds.stream.get_length()
+	$Sounds.play()
 
 ## Helper methods
 func back_to_the_past() -> void:

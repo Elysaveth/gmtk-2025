@@ -31,5 +31,14 @@ do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 do npc_appears("Club_flyers")
 {{MC}}: Maybe I could join one of the clubs for a change...
 do npc_leaves("Club_flyers")
-{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait=0.5] I'll just go home.
+{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait={{patience}}] I'll just go home.
+do move_to_location("Purple") [wait(2 * transition_time + 1)]
+ 
+=> second_day
+
+~ second_day
+do move_to_location("Class") [wait(2 * transition_time + 1)]
+do play_sound("School_Bell") [wait(sound_length)]
+{{MC}}: Finally... Great job today, me! I didn't fall asleep for the entirety of the homeroom
+{{MC}}: Although I wish 
 => END
