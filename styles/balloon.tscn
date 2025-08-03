@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bor1xmmnm7mkc"]
+[gd_scene load_steps=20 format=3 uid="uid://bor1xmmnm7mkc"]
 
 [ext_resource type="Script" uid="uid://c0vxtx55u23ps" path="res://styles/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
@@ -9,6 +9,9 @@
 [ext_resource type="FontFile" uid="uid://df8v0unphjykd" path="res://styles/komika_text/KOMTXTB_.ttf" id="5_n7yxb"]
 [ext_resource type="AudioStream" uid="uid://dvfb34lbkb6p3" path="res://assets/sounds/marble_collision.wav" id="6_0gaxg"]
 [ext_resource type="Theme" uid="uid://ce5sxgf8ckpd1" path="res://styles/repuesta.tres" id="7_vl4f3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7yxb"]
+size = Vector2(120, 40)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -133,8 +136,14 @@ _data = {
 }
 
 [node name="ExampleBalloon" type="CanvasLayer"]
-layer = 100
+layer = 2
 script = ExtResource("1_36de5")
+
+[node name="PauseArea" type="Area2D" parent="."]
+position = Vector2(1180, 40)
+
+[node name="Shape" type="CollisionShape2D" parent="PauseArea"]
+shape = SubResource("RectangleShape2D_n7yxb")
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -144,6 +153,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = SubResource("Theme_qq3yp")
 metadata/_edit_use_anchors_ = true
 
@@ -271,6 +281,8 @@ autoplay = "ContinueMovement"
 [node name="TalkSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0gaxg")
 
+[connection signal="mouse_entered" from="PauseArea" to="." method="_on_area_mouse_entered"]
+[connection signal="mouse_exited" from="PauseArea" to="." method="_on_area_mouse_exited"]
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="spoke" from="Balloon/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

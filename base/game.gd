@@ -21,6 +21,8 @@ func _process(_delta: float) -> void:
 		$Characters.hide()
 	if run_dialog:
 		run_dialog = false
+		if balloon:
+			balloon.free()
 		await get_tree().create_timer(1).timeout
 		if debug_mode:
 			balloon = DialogueManager.show_dialogue_balloon(load(current_scene))

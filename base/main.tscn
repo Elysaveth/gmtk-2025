@@ -83,13 +83,16 @@ _data = {
 &"new_animation": SubResource("Animation_jo60l")
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_3xxnu")
 
 [node name="Game" parent="." instance=ExtResource("1_f47da")]
 intro_dialogue = ExtResource("3_5e13l")
 
 [node name="UI" parent="." instance=ExtResource("1_wbdts")]
+layout_mode = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -131,3 +134,4 @@ autoplay = "fade out"
 [connection signal="npc_spawn" from="." to="Game" method="_on_main_npc_spawn"]
 [connection signal="character_selected" from="UI" to="." method="_on_ui_character_selected"]
 [connection signal="debug_mode_on" from="UI" to="." method="_on_ui_debug_mode_on"]
+[connection signal="main_menu" from="UI" to="." method="_on_ui_main_menu"]

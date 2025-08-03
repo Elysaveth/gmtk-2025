@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 var current_scene: String
 var MC: String
@@ -20,6 +20,8 @@ func _ready() -> void:
 
 func _on_ui_character_selected(username: String) -> void:
 	MC = username
+	$Game/Backgrounds/CurrentBackground.texture = load("res://assets/backgrounds/Purple.jpg")
+	$Game.run_dialog = true
 	$Game.set_process(true)
 
 func _on_ui_debug_mode_on(scene: String) -> void:
@@ -73,3 +75,7 @@ func play_sound(sound: String) -> void:
 ## Helper methods
 func back_to_the_past() -> void:
 	emit_signal("back_to_past", $TimeSystem.time)
+
+
+func _on_ui_main_menu() -> void:
+	get_tree().change_scene_to_file("res://base/main.tscn")

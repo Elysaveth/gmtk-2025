@@ -41,6 +41,8 @@ signal finished_typing()
 
 var _already_mutated_indices: PackedInt32Array = []
 
+var freeze: bool = false
+
 
 ## The current line of dialogue.
 var dialogue_line:
@@ -67,6 +69,11 @@ var _last_mutation_index: int = -1
 var _waiting_seconds: float = 0
 var _is_awaiting_mutation: bool = false
 
+
+func _ready() -> void:
+	var ui = get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_parent().get_node("UI")
+	ui.paused.connect(_on_ui_paused)
+	ui.unpaused.connect(_on_ui_unpaused)
 
 func _process(delta: float) -> void:
 	if self.is_typing:
@@ -126,37 +133,38 @@ func skip_typing() -> void:
 
 # Type out the next character(s)
 func _type_next(delta: float, seconds_needed: float) -> void:
-	if _is_awaiting_mutation: return
-
-	if visible_characters == get_total_character_count():
-		return
-
-	if _last_mutation_index != visible_characters:
-		_last_mutation_index = visible_characters
-		_mutate_inline_mutations(visible_characters)
+	if not freeze:
 		if _is_awaiting_mutation: return
 
-	var additional_waiting_seconds: float = _get_pause(visible_characters)
+		if visible_characters == get_total_character_count():
+			return
 
-	# Pause on characters like "."
-	if _should_auto_pause():
-		additional_waiting_seconds += seconds_per_pause_step
+		if _last_mutation_index != visible_characters:
+			_last_mutation_index = visible_characters
+			_mutate_inline_mutations(visible_characters)
+			if _is_awaiting_mutation: return
 
-	# Pause at literal [wait] directives
-	if _last_wait_index != visible_characters and additional_waiting_seconds > 0:
-		_last_wait_index = visible_characters
-		_waiting_seconds += additional_waiting_seconds
-		paused_typing.emit(_get_pause(visible_characters))
-	else:
-		visible_characters += 1
-		if visible_characters <= get_total_character_count():
-			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
-		# See if there's time to type out some more in this frame
-		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
-		if seconds_needed > delta:
-			_waiting_seconds += seconds_needed
+		var additional_waiting_seconds: float = _get_pause(visible_characters)
+
+		# Pause on characters like "."
+		if _should_auto_pause():
+			additional_waiting_seconds += seconds_per_pause_step
+
+		# Pause at literal [wait] directives
+		if _last_wait_index != visible_characters and additional_waiting_seconds > 0:
+			_last_wait_index = visible_characters
+			_waiting_seconds += additional_waiting_seconds
+			paused_typing.emit(_get_pause(visible_characters))
 		else:
-			_type_next(delta, seconds_needed)
+			visible_characters += 1
+			if visible_characters <= get_total_character_count():
+				spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+			# See if there's time to type out some more in this frame
+			seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
+			if seconds_needed > delta:
+				_waiting_seconds += seconds_needed
+			else:
+				_type_next(delta, seconds_needed)
 
 
 # Get the pause for the current typing position if there is one
@@ -230,3 +238,9 @@ func _should_auto_pause() -> bool:
 		return false
 
 	return parsed_text[visible_characters - 1] in pause_at_characters.split()
+
+func _on_ui_paused() -> void:
+	freeze = true
+	
+func _on_ui_unpaused() -> void:
+	freeze = false

@@ -3,6 +3,9 @@ extends Control
 
 signal character_selected(username: String)
 signal debug_mode_on(scene: String)
+signal main_menu
+signal paused
+signal unpaused
 
 var character_name: String
 var debug_mode: bool = false
@@ -33,9 +36,8 @@ func _on_confirm_pressed() -> void:
 		if not debug_mode:
 			character_name = $Menus/BaseMenu/Main/Username/Username.text
 			emit_signal("character_selected", character_name)
-			
 		else:
-			
+			print("WE ARE IN DEBUG MODE!")
 			emit_signal("debug_mode_on", $Menus/BaseMenu/Main/Username/Username.text)
 		$Menus/BaseMenu/Main.hide()
 		$Menus/BaseMenu/InGame.show()
@@ -46,18 +48,19 @@ func _on_confirm_pressed() -> void:
 
 
 func _on_pause_pressed() -> void:
+	emit_signal("paused")
 	$Menus/BaseMenu/InGame.hide()
 	$Menus/BaseMenu/Pause.show()
 
 
 func _on_resume_pressed() -> void:
+	emit_signal("unpaused")
 	$Menus/BaseMenu/Pause.hide()
 	$Menus/BaseMenu/InGame.show()
 
 
 func _on_main_menu_pressed() -> void:
-	$Menus/BaseMenu/Pause.hide()
-	$Menus/BaseMenu/Main.show()
+	emit_signal("main_menu")
 
 
 func _on_username_text_submitted(_new_text: String) -> void:

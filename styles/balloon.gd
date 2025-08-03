@@ -44,6 +44,8 @@ var dialogue_line: DialogueLine:
 ## A cooldown timer for delaying the balloon hide when encountering a mutation.
 var mutation_cooldown: Timer = Timer.new()
 
+var mouse_over_pause: bool = false
+
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
 
@@ -78,7 +80,8 @@ func _ready() -> void:
 
 func _unhandled_input(_event: InputEvent) -> void:
 	# Only the balloon is allowed to handle input while it's showing
-	get_viewport().set_input_as_handled()
+	#get_viewport().set_input_as_handled()
+	pass
 
 
 func _notification(what: int) -> void:
@@ -160,25 +163,26 @@ func _on_mutated(_mutation: Dictionary) -> void:
 
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
-	# See if we need to skip typing of the dialogue
-	if dialogue_label.is_typing:
-		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
-		var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
-		if mouse_was_clicked or skip_button_was_pressed:
-			get_viewport().set_input_as_handled()
-			dialogue_label.skip_typing()
-			return
+	if not mouse_over_pause:
+		# See if we need to skip typing of the dialogue
+		if dialogue_label.is_typing:
+			var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
+			var skip_button_was_pressed: bool = event.is_action_pressed(skip_action)
+			if mouse_was_clicked or skip_button_was_pressed:
+				get_viewport().set_input_as_handled()
+				dialogue_label.skip_typing()
+				return
 
-	if not is_waiting_for_input: return
-	if dialogue_line.responses.size() > 0: return
+		if not is_waiting_for_input: return
+		if dialogue_line.responses.size() > 0: return
 
-	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
+		# When there are no response options the balloon itself is the clickable thing
+		get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
-		next(dialogue_line.next_id)
+		if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+			next(dialogue_line.next_id)
+		elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+			next(dialogue_line.next_id)
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
@@ -192,3 +196,11 @@ func _on_dialogue_label_spoke(letter: String, _letter_index: int, _speed: float)
 	if not letter in [".", ",", " "]:
 		talk_sound.pitch_scale = randf_range(0.8, 1.2)
 		talk_sound.play()
+
+
+func _on_area_mouse_entered() -> void:
+	mouse_over_pause = true
+
+
+func _on_area_mouse_exited() -> void:
+	mouse_over_pause = false
