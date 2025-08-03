@@ -17,8 +17,7 @@ signal bg_changes(bg_name: String)
 signal back_to_past(time: TimeObject)
 
 func _ready() -> void:
-	if OS.is_debug_build():
-		$Intro.free()
+	$UI/GameEvents.layer = -2
 	$Game.transition_time = transition_time
 
 func _on_ui_character_selected(username: String) -> void:
@@ -90,7 +89,11 @@ func play_music(song: String = "random") -> void:
 
 ## Helper methods
 func back_to_the_past() -> void:
+	$UI/GameEvents/BackToThePast/LoopBack.play()
+	$UI/GameEvents.layer = 8
 	emit_signal("back_to_past", $TimeSystem.time)
+	await get_tree().create_timer(5).timeout
+	$UI/GameEvents.layer = -2
 
 
 func _on_ui_main_menu() -> void:

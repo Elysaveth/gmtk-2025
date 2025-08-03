@@ -16,15 +16,14 @@ func _on_play_pressed() -> void:
 	$Menus/BaseMenu/Main/Username.show()
 
 func _on_settings_pressed() -> void:
-	if OS.is_debug_build():
-		debug_mode = true
-		$Menus/BaseMenu/Main/Username/Username.placeholder_text = "Enter scene to load"
-		$Menus/BaseMenu/Main/Buttons.hide()
-		$Menus/BaseMenu/Main/Username.show()
-		if $Menus/BaseMenu/Pause.visible:
-			$Menus/BaseMenu/InGame.hide()
-			$Menus/BaseMenu/Pause.hide()
-			$Menus/BaseMenu/Main.show()
+	debug_mode = true
+	$Menus/BaseMenu/Main/Username/Username.placeholder_text = "Enter scene to load"
+	$Menus/BaseMenu/Main/Buttons.hide()
+	$Menus/BaseMenu/Main/Username.show()
+	if $Menus/BaseMenu/Pause.visible:
+		$Menus/BaseMenu/InGame.hide()
+		$Menus/BaseMenu/Pause.hide()
+		$Menus/BaseMenu/Main.show()
 
 func _on_quit_pressed() -> void:
 	pass # Replace with function body.
