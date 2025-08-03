@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7wnfmneub2g8"]
+[gd_scene load_steps=13 format=3 uid="uid://c7wnfmneub2g8"]
 
 [ext_resource type="Script" uid="uid://itih2hwvbl4o" path="res://base/main.gd" id="1_3xxnu"]
 [ext_resource type="PackedScene" uid="uid://cwa6im4xrq58o" path="res://base/game.tscn" id="1_f47da"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://ddqvbobqhvems" path="res://story/intro.dialogue" id="3_5e13l"]
 [ext_resource type="Script" uid="uid://ckvee7iqc8brt" path="res://resources/time_system.gd" id="4_pex66"]
 [ext_resource type="Script" uid="uid://cpbl1y7cnrsx8" path="res://resources/time_object.gd" id="5_5e13l"]
+[ext_resource type="Texture2D" uid="uid://dolejjue4w0p" path="res://assets/intro/Intro.png" id="7_jo60l"]
 
 [sub_resource type="Resource" id="Resource_jo60l"]
 script = ExtResource("5_5e13l")
@@ -16,6 +17,71 @@ days = 0
 months = 0
 years = 0
 metadata/_custom_type_script = "uid://cpbl1y7cnrsx8"
+
+[sub_resource type="Animation" id="Animation_jo60l"]
+resource_name = "new_animation"
+
+[sub_resource type="Animation" id="Animation_h6pip"]
+resource_name = "fade out"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(2.82843, 1.07177, 1),
+"update": 0,
+"values": [Color(0.180967, 0.0929547, 0.320952, 1), Color(0.181, 0.093, 0.321, 0), Color(0.545098, 0.384314, 0.843137, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 3.36358),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_oioov"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.180967, 0.0929547, 0.320952, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6pip"]
+_data = {
+&"RESET": SubResource("Animation_oioov"),
+&"fade out": SubResource("Animation_h6pip"),
+&"new_animation": SubResource("Animation_jo60l")
+}
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3xxnu")
@@ -33,6 +99,30 @@ time = SubResource("Resource_jo60l")
 metadata/_custom_type_script = "uid://ckvee7iqc8brt"
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
+
+[node name="Intro" type="Node2D" parent="."]
+visibility_layer = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Intro"]
+layer = 10
+visible = false
+
+[node name="Screen" type="Sprite2D" parent="Intro/CanvasLayer"]
+position = Vector2(641, 362)
+texture = ExtResource("7_jo60l")
+
+[node name="ColorRect" type="ColorRect" parent="Intro/CanvasLayer"]
+offset_right = 641.0
+offset_bottom = 362.0
+scale = Vector2(2, 2)
+color = Color(0.180967, 0.0929547, 0.320952, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Intro/CanvasLayer"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_h6pip")
+}
+autoplay = "fade out"
 
 [connection signal="back_to_past" from="." to="Game" method="_on_main_back_to_past"]
 [connection signal="back_to_past" from="." to="UI" method="_on_main_back_to_past"]
