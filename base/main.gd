@@ -6,11 +6,13 @@ var character_present: String
 var has_waited: bool
 var waited_evets: Array[String]
 var current_background: String
+var patience_for_choices: float
 @export var transition_time: float = 2.0
 
 signal npc_spawn(npc_name: String)
 signal npc_desapawn(npc_name: String)
 signal bg_changes(bg_name: String)
+signal back_to_past(time: TimeObject)
 
 func _ready() -> void:
 	$Game.transition_time = transition_time
@@ -38,13 +40,13 @@ func move_to_location(bg_name: String) -> void:
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 
+
+## Check if player waited or clicked
 func wait_for_seconds(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
-	print("Time pased")
 	has_waited = true
 	
 func check_waited(scene: String) -> void:
-	print("Checking if waited")
 	if has_waited:
 		waited_evets.append(scene)
 	has_waited = false
@@ -53,3 +55,8 @@ func check_if_waited(scene: String) -> bool:
 	if waited_evets.find(scene) != -1:
 		return true
 	return false
+
+
+## Helper methods
+func back_to_the_past() -> void:
+	emit_signal("back_to_past", $TimeSystem.time)

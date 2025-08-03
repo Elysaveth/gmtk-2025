@@ -49,3 +49,17 @@ func _on_main_menu_pressed() -> void:
 
 func _on_username_text_submitted(_new_text: String) -> void:
 	_on_confirm_pressed()
+
+
+func _on_main_back_to_past(time: TimeObject) -> void:
+	var time_string: String
+	if time.days != 0:
+		time_string += "%s Days, " % time.days
+	if time.hours != 0 or time.days != 0:
+		time_string += "%s Hours, " % time.hours
+	if time.minutes != 0 or time.hours != 0 or time.days != 0:
+		time_string += "%s Minutes, " % time.minutes
+	time_string += "%s Seconds, " % time.seconds
+	$GameEvents/BackToThePast/TimePlayed.text = """
+	[b][i]You have played:[/i][/b][i][/i]
+	[fade start=-1 length=%s][b]%s[/b][/fade]""" % [len(time_string) + 4, time_string]
