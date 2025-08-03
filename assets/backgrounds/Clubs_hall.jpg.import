@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtthc36ymsg6n"
-path="res://.godot/imported/Pasillo.jpg-3f02e2d51bcafd9c3262fdcadc0c60e4.ctex"
+uid="uid://td0i3o0e0th1"
+path="res://.godot/imported/Clubs_hall.jpg-83021ad651b64e6e30a57b9225b9f433.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/Pasillo.jpg"
-dest_files=["res://.godot/imported/Pasillo.jpg-3f02e2d51bcafd9c3262fdcadc0c60e4.ctex"]
+source_file="res://assets/backgrounds/Clubs_hall.jpg"
+dest_files=["res://.godot/imported/Clubs_hall.jpg-83021ad651b64e6e30a57b9225b9f433.ctex"]
 
 [params]
 
