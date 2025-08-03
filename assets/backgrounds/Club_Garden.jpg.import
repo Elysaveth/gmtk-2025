@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdd0i7c8x681w"
-path="res://.godot/imported/Aula_Back.jpg-c5a29db4341ea80aca6ddd81760cd0aa.ctex"
+uid="uid://bw4fol3mqymu6"
+path="res://.godot/imported/Club_Garden.jpg-d5119e2dec10ee563694340be416cda8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/backgrounds/Aula_Back.jpg"
-dest_files=["res://.godot/imported/Aula_Back.jpg-c5a29db4341ea80aca6ddd81760cd0aa.ctex"]
+source_file="res://assets/backgrounds/Club_Garden.jpg"
+dest_files=["res://.godot/imported/Club_Garden.jpg-d5119e2dec10ee563694340be416cda8.ctex"]
 
 [params]
 
