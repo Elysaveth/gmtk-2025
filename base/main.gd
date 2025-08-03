@@ -22,6 +22,11 @@ func _on_ui_character_selected(username: String) -> void:
 	MC = username
 	$Game.set_process(true)
 
+func _on_ui_debug_mode_on(scene: String) -> void:
+	MC = "DEBUG"
+	$Game.debug_mode = true
+	$Game.current_scene = "res://story/%s.dialogue" % scene
+	$Game.set_process(true)
 
 ## NPC interactions
 func npc_appears(npc_name: String) -> void:

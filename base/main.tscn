@@ -130,3 +130,4 @@ autoplay = "fade out"
 [connection signal="npc_desapawn" from="." to="Game" method="_on_main_npc_desapawn"]
 [connection signal="npc_spawn" from="." to="Game" method="_on_main_npc_spawn"]
 [connection signal="character_selected" from="UI" to="." method="_on_ui_character_selected"]
+[connection signal="debug_mode_on" from="UI" to="." method="_on_ui_debug_mode_on"]

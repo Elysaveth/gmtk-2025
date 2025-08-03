@@ -1,0 +1,37 @@
+~ standard
+% {{MC}}: I'll just go home.
+% {{MC}}: I'd better get home.
+% {{MC}}: I should go home.
+% {{MC}}: Anyway, I'll head home.
+% {{MC}}: I should be homeward bound.
+% {{MC}}: I'll see myself home.
+% {{MC}}: Well, home is where my heart is right now.
+% {{MC}}: Time to return to my heaven.
+% {{MC}}: I'm off to my turf.
+% {{MC}}: I'm going back to my place.
+% {{MC}}: I've got to bounce back to base.
+% {{MC}}: Anyway, back to my domain...
+% {{MC}}: Heading to my humble abode
+% {{MC}}: I'll retreat to my lair.
+% {{MC}}: Off to my sanctuary.
+% {{MC}}: Time to head back to the nest.
+% {{MC}}: My sofa is calling me.
+% {{MC}}: Back to my little piece of the earth.
+% {{MC}}: I’m rolling home.
+% {{MC}}: On my way to my comfort zone.
+% {{MC}}: My bed awaits.
+% {{MC}}: I’m cruising back to my headquarters
+% {{MC}}: I’m bouncing back to my crib.
+% {{MC}}: I’m off to my corner of the world.
+% {{MC}}: I’m calling it a day
+% {{MC}}: I’m clocking out and hitting the road.
+% {{MC}}: Time to hit the homestretch.
+% {{MC}}: Gotta hit the road to my house.
+% {{MC}}: Time to return to the cave.
+% {{MC}}: Time to retreat to the castle.
+% {{MC}}: My front door is waiting for me.
+% {{MC}}: I’m clocking out and hitting the road.
+% {{MC}}: I’m heading out for the day.
+
+do move_to_location("Purple") [wait(2 * transition_time + 1)]
+=> END

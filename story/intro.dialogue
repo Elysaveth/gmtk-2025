@@ -1,3 +1,7 @@
+import "res://story/park.dialogue" as park
+import "res://story/clubs_building.dialogue" as clubs_building
+import "res://story/go_home.dialogue" as go_home
+
 ~ start
 do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 
@@ -31,14 +35,49 @@ do move_to_location("School_Front") [wait(2 * transition_time + 1)]
 do npc_appears("Club_flyers")
 {{MC}}: Maybe I could join one of the clubs for a change...
 do npc_leaves("Club_flyers")
-{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait={{patience}}] I'll just go home.
-do move_to_location("Purple") [wait(2 * transition_time + 1)]
- 
+{{MC}}: Who am I kidding? I wouldn't show up anyway. [wait={{patience}}] =>< go_home/standard
 => second_day
 
 ~ second_day
-do move_to_location("Class") [wait(2 * transition_time + 1)]
+do move_to_location("Class_Front") [wait(2 * transition_time + 1)]
 do play_sound("School_Bell") [wait(sound_length)]
 {{MC}}: Finally... Great job today, me! I didn't fall asleep for the entirety of the homeroom
-{{MC}}: Although I wish 
+{{MC}}: Although I wish I haven't heard about the evaluation exam next week. Who does an exam on the seconf week of school? Seriously...[do! wait_for_seconds(5)] [wait=5] [do check_waited("After_First_Class")] 
+if check_if_waited("Inauguration")
+	Nakayama: Well then... Who's up for karaoke!?
+	{{MC}}: (we just found the party animal of the class)
+	Classmate: Are you kidding? It's first day
+	Nakayama: Precisely
+{{MC}}: I should get moving. Where to, tho?
+- Club's Building
+	{{MC}}: Maybe I should join a club after all =>< clubs_building/intro
+- Student Council
+	{{MC}}: I should with the student council =>< student_council_intro
+- Library
+	{{MC}}: I mean. I know it's just an evaluation, but I don't wanna score low to begin with =>< library_intro
+- Park
+	{{MC}}: I feel like taking a walk =>< park/intro
+- Piano Classes
+	{{MC}}: Okay, crazy proposal. What if I started playing piano? =>< piano_classes_intro
+- Join the Karaoke plan [if check_if_waited("Inauguration")]
+	{{MC}}: Best way to start: by making friends =>< making_friends
+- Go Home
+	{{MC}}: Ol' trusty "go home". Never fails. =>< go_home/standard
+=> third_day
+
+~ third_day
+do move_to_location("Class_Entrance") [wait(2 * transition_time + 1)]
+=> END
+
+~ student_council_intro
+do move_to_location("Class_Front") [wait(2 * transition_time + 1)]
+=> END
+
+~ library_intro
+=> END
+
+~ piano_classes_intro
+=> END
+
+~ making_friends
 => END
