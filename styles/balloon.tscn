@@ -81,52 +81,32 @@ MarginContainer/constants/margin_top = 0
 [sub_resource type="Animation" id="Animation_1q6pi"]
 resource_name = "ContinueMovement"
 loop_mode = 1
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1100, -0.25, 0, 0.25, 0, 1100, -0.25, 0, 0.25, 0, 1100, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(600, -0.25, 0, 0.25, 0, 610, -0.25, 0, 0.25, 0, 600, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1100, 600), Vector2(1100, 619), Vector2(1100, 600)]
 }
 
 [sub_resource type="Animation" id="Animation_ns7vv"]
 length = 0.001
-tracks/0/type = "bezier"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
+tracks/0/path = NodePath("..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1190, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(670, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1100, 600)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0gaxg"]
@@ -245,11 +225,12 @@ modulate = Color(1, 0.62, 1, 1)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.953125
-anchor_top = 1.0
+anchor_top = 1.02639
 anchor_right = 0.953125
-anchor_bottom = 1.0
+anchor_bottom = 1.02639
 offset_left = -120.0
-offset_top = -120.0
+offset_top = -139.0
+offset_bottom = -19.0002
 grow_horizontal = 0
 grow_vertical = 0
 texture = ExtResource("4_ns7vv")
@@ -264,10 +245,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1070.0
-offset_top = 550.0
-offset_right = 1190.0
-offset_bottom = 670.0
+offset_left = 980.0
+offset_top = 480.0
+offset_right = 1100.0
+offset_bottom = 600.0
 grow_horizontal = 0
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
