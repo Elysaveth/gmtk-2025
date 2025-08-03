@@ -20,8 +20,10 @@ do move_to_location("School_Hall") [wait(2 * transition_time + 1)]
 
 if intro_passed:
 	{{MC}}: That... Did... Not... Happen...
+	do npc_appears("Ayuzawa")
 	Classmate: [i]ssshhhh[/i]
 	{{MC}}: [i]Sorry...[/i] (Please, tell me I just fell asleep)
+	do npc_leaves("Ayuzawa")
 
 {{MC}}: That was boring enough.[do! wait_for_seconds(5)] [wait=5] [do check_waited("Inauguration")] I'll just go home
 
@@ -37,6 +39,12 @@ do move_to_location("School_Entrance") [wait(2 * transition_time + 1)]
 
 ~ clubs_intro
 {{MC}}: Oh, great. Now I have to survive the club recruitment parade. Forgot about that. [wait=1]
+do npc_appears("Murasame") [wait(1)]
+do npc_leaves("Murasame")
+do npc_appears("Yamada") [wait(1)]
+do npc_leaves("Yamada")
+do npc_appears("Sawatari") [wait(1)]
+do npc_leaves("Sawatari")
 {{MC}}: [wait=1] OMG, that was something alright. Now what do I do with all this?
 do npc_appears("Club_flyers")
 {{MC}}: Maybe I could join one of the clubs for a change...
@@ -64,12 +72,14 @@ do npc_leaves("Club_flyers")
 do move_to_location("Class_Front") [wait(2 * transition_time + 1)]
 do play_sound("School_Bell") [wait(sound_length)]
 {{MC}}: Finally... Great job today, me! I didn't fall asleep for the entirety of the homeroom
-{{MC}}: Although I wish I haven't heard about the evaluation exam next week. Who does an exam on the seconf week of school? Seriously...[do! wait_for_seconds(5)] [wait=5] [do check_waited("After_First_Class")] 
+{{MC}}: Although I wish I haven't heard about the evaluation exam next week. Who does an exam on the second week of school? Seriously...[do! wait_for_seconds(5)] [wait=5] [do check_waited("After_First_Class")] 
 if check_if_waited("After_First_Class")
-	Nakayama: Well then... Who's up for karaoke!?
+	do npc_appears("Saeko")
+	Saeko: Well then... Who's up for karaoke!?
 	{{MC}}: (we just found the party animal of the class)
 	Classmate: Are you kidding? It's first day
-	Nakayama: Precisely
+	Saeko: Precisely
+	do npc_leaves("Saeko")
 {{MC}}: I should get moving. Where to, tho?
 if intro_passed:
 	- Club's Building
@@ -93,65 +103,68 @@ else:
 ~ third_day
 do move_to_location("School_Entrance") [wait(2 * transition_time + 1)]
 {{MC}}: Another day, another class.
-{{MC}}: Hey, was that door always on the Club's Building? It's kinda out of place...
-do move_to_location("Witch_Door") [wait(2 * transition_time + 1)]
-{{MC}}: Woah. That's some architectural decisions alright. I can't believe I didn't notice this before. Should I...?
-{{MC}}: Who am I kidding? This thing is creepy enough that I, for once, want to be on time for class.
-do move_to_location("Class_Back")[wait(2 * transition_time + 1)]
-Teacher: ...classes for anyone who scores below 25.
-do play_sound("School_Bell") [wait(sound_length)]
-Teacher: And rememeber to bring back the prints before the evaluation exam!
-{{MC}}: Ugh, I forgot to bring launch. I'll have to buy something at the cafeteria with my precious lunch break time...
-do npc_appears("Bruja")
-{{MC}}: Woah! Sorry, didn't see you there...
-???: ...
-{{MC}}: Can I... help you with something? I need to get to the cafeter [next=auto]
-???: Come with me
-{{MC}}: What? WOAH. Hey! Lady!! Don't drag m [next=auto]
-{{MC}}: I really need to get to [next=auto]
-do move_to_location("Witch_Door") [wait(2 * transition_time + 1)]
-{{MC}}: ...
-???: Please, go in
-{{MC}}: (NOW you ask nicely?) Oh, so the creepy door and you are related. That checks out.
-???: Come on, go in
-{{MC}}: Yeah, yeah...
-do move_to_location("Witch_Room") [wait(2 * transition_time + 1)]
-{{MC}}: So... what[next=auto]
-| {{MC}}: can I...
-| ???: I've bring you here because I've been watching you
-{{MC}}: Eeeemm, okay... Do we [next=auto]
-???: You live your life like it's nothing
-| {{MC}}: (OMG. First of all: creepy. Second: Manners, lady!)
-| ???: You carry yourself from one task to another, encumbranced like everyrhing you do is a burden.
-{{MC}}: (I'm not gonna give you the pleasure of interrupting me again) [wait=0.5]
-???: As you wish. [wait=0.1] Do you know where we are?
-{{MC}}: School? (or do you mean this weird room from a horror movie?)
-???: I meant school, yes.
-{{MC}}: (Did she just...? OMG I need to get out of here)
-???: You don't have to be so scared. I'm actually here to help
-{{MC}}: (Yeah, right) [next=0.5]
-???: Your last years of school are the more important years of your life
-{{MC}}: (I've heard that before. Did you get it out of my mind? Just checking if you actually can) [next=auto]
-???: I'm want to help you. I'll make a deal with you.
-{{MC}}: (Okay, okay. If you can really read my thoughts I'll take you serioursly and run. Otherwise...)
-???: What do you want me to say? This IS a serious offer. I'll send you back to the entrance ceremony
-{{MC}}: What? (Don't listen! Run!)
-???: You're funny.
-???: I'll send you back to the day of the entrance ceremony and you'll be able to really take your life into your own hands. You'll be able to give every little decision some thought. And make it so. As they will define who you'll become for the rest of your life.
-???: And don't worry, if you regret something, come back to see me. I can send you back as much as you need.
-???: The only price is your life. YOUR time.
-???: Don't worry, the first time is on me, and I won't kidnap you again. See you soon! [next=auto]
-{{MC}}: No, no, no, no, WHAT? I didn't even agree [next=auto]
-do move_to_location("Purple") [wait(2 * transition_time + 1)]
-set intro_passed = true
-=> ceremony
+if not intro_passed:
+	{{MC}}: Hey, was that door always on the Club's Building? It's kinda out of place...
+	do move_to_location("Witch_Door") [wait(2 * transition_time + 1)]
+	{{MC}}: Woah. That's some architectural decisions alright. I can't believe I didn't notice this before. Should I...?
+	{{MC}}: Who am I kidding? This thing is creepy enough that I, for once, want to be on time for class.
+	do move_to_location("Class_Back")[wait(2 * transition_time + 1)]
+	Teacher: ...classes for anyone who scores below 25.
+	do play_sound("School_Bell") [wait(sound_length)]
+	Teacher: And rememeber to bring back the prints before the evaluation exam!
+	{{MC}}: Ugh, I forgot to bring lunch. I'll have to buy something at the cafeteria with my precious lunch break time...
+	do npc_appears("Brujilda")
+	{{MC}}: Woah! Sorry, didn't see you there...
+	???: ...
+	{{MC}}: Can I... help you with something? I need to get to the cafeter [next=auto]
+	???: Come with me
+	{{MC}}: What? WOAH. Hey! Lady!! Don't drag m [next=auto]
+	{{MC}}: I really need to get to [next=auto]
+	do move_to_location("Witch_Door") [wait(2 * transition_time + 1)]
+	{{MC}}: ...
+	???: Please, go in
+	{{MC}}: (NOW you ask nicely?) Oh, so the creepy door and you are related. That checks out.
+	???: Come on, go in
+	{{MC}}: Yeah, yeah...
+	do move_to_location("Witch_Room") [wait(2 * transition_time + 1)]
+	{{MC}}: So... what[next=auto]
+	| {{MC}}: can I...
+	| ???: I've bring you here because I've been watching you
+	{{MC}}: Eeeemm, okay... Do we [next=auto]
+	???: You live your life like it's nothing
+	| {{MC}}: (OMG. First of all: creepy. Second: Manners, lady!)
+	| ???: You carry yourself from one task to another, encumbranced like everyrhing you do is a burden.
+	{{MC}}: (I'm not gonna give you the pleasure of interrupting me again) [wait=0.5]
+	???: As you wish. [wait=0.1] Do you know where we are?
+	{{MC}}: School? (or do you mean this weird room from a horror movie?)
+	???: I meant school, yes.
+	{{MC}}: (Did she just...? OMG I need to get out of here)
+	???: You don't have to be so scared. I'm actually here to help
+	{{MC}}: (Yeah, right) [next=0.5]
+	???: Your last years of school are the more important years of your life
+	{{MC}}: (I've heard that before. Did you get it out of my mind? Just checking if you actually can) [next=auto]
+	???: I'm want to help you. I'll make a deal with you.
+	{{MC}}: (Okay, okay. If you can really read my thoughts I'll take you serioursly and run. Otherwise...)
+	???: What do you want me to say? This IS a serious offer. I'll send you back to the entrance ceremony
+	{{MC}}: What? (Don't listen! Run!)
+	???: You're funny.
+	???: I'll send you back to the day of the entrance ceremony and you'll be able to really take your life into your own hands. You'll be able to give every little decision some thought. And make it so. As they will define who you'll become for the rest of your life.
+	???: And don't worry, if you regret something, come back to see me. I can send you back as much as you need.
+	???: The only price is your life. YOUR time.
+	???: That's all. The first time is on me, and I won't kidnap you again. See you soon! [next=auto]
+	{{MC}}: No, no, no, no, WHAT? I didn't even agree [next=auto]
+	do npc_leaves("Brujilda")
+	do back_to_the_past()
+	set intro_passed = true
+
 => END
 
 ~ student_council_intro
-do move_to_location("Class_Front") [wait(2 * transition_time + 1)]
+do move_to_location("Students_Council") [wait(2 * transition_time + 1)]
 => END
 
 ~ library_intro
+do move_to_location("Library") [wait(2 * transition_time + 1)]
 => END
 
 ~ piano_classes_intro

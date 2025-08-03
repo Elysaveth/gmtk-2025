@@ -94,4 +94,4 @@ func _on_main_bg_changes(bg_name: String) -> void:
 
 
 func _on_main_back_to_past(time: TimeObject) -> void:
-	balloon = DialogueManager.show_dialogue_balloon(intro_dialogue)
+	balloon = DialogueManager.show_dialogue_balloon(intro_dialogue, "ceremony")
