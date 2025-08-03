@@ -1,5 +1,6 @@
 extends Node2D
 
+var current_dialogue: String
 var current_scene: String
 var characters_present: Array[String]
 var run_dialog: bool = true
@@ -25,7 +26,11 @@ func _process(_delta: float) -> void:
 			balloon.free()
 		await get_tree().create_timer(1).timeout
 		if debug_mode:
-			balloon = DialogueManager.show_dialogue_balloon(load(current_scene))
+			if current_scene.is_empty():
+				balloon = DialogueManager.show_dialogue_balloon(load(current_dialogue))
+			else:
+				balloon = DialogueManager.show_dialogue_balloon(load(current_dialogue), current_scene)
+				
 		else:
 			balloon = DialogueManager.show_dialogue_balloon(intro_dialogue)
 

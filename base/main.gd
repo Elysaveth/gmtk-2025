@@ -16,6 +16,8 @@ signal bg_changes(bg_name: String)
 signal back_to_past(time: TimeObject)
 
 func _ready() -> void:
+	if OS.is_debug_build():
+		$Intro.free()
 	$Game.transition_time = transition_time
 
 func _on_ui_character_selected(username: String) -> void:
@@ -27,7 +29,12 @@ func _on_ui_character_selected(username: String) -> void:
 func _on_ui_debug_mode_on(scene: String) -> void:
 	MC = "DEBUG"
 	$Game.debug_mode = true
-	$Game.current_scene = "res://story/%s.dialogue" % scene
+	var scene_name = scene.split("/")
+	print(scene_name[0])
+	$Game.current_dialogue = "res://story/%s.dialogue" % scene_name[0]
+	if len(scene_name) == 2:
+		$Game.current_scene = scene_name[1]
+	$Game.run_dialog = true
 	$Game.set_process(true)
 
 ## NPC interactions
@@ -78,4 +85,4 @@ func back_to_the_past() -> void:
 
 
 func _on_ui_main_menu() -> void:
-	get_tree().change_scene_to_file("res://base/main.tscn")
+	get_tree().reload_current_scene()
