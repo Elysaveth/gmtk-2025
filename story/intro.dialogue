@@ -50,17 +50,17 @@ if check_if_waited("Inauguration")
 	Nakayama: Precisely
 {{MC}}: I should get moving. Where to, tho?
 - Club's Building
-	{{MC}}: Maybe I should join a club after all => clubs_building/intro
+	{{MC}}: Maybe I should join a club after all =>< clubs_building/intro
 - Student Council
-	{{MC}}: I should with the student council => student_council_intro
+	{{MC}}: I should with the student council =>< student_council_intro
 - Library
-	{{MC}}: I mean. I know it's just an evaluation, but I don't wanna score low to begin with => library_intro
+	{{MC}}: I mean. I know it's just an evaluation, but I don't wanna score low to begin with =>< library_intro
 - Park
-	{{MC}}: I feel like taking a walk => park/intro
+	{{MC}}: I feel like taking a walk =>< park/intro
 - Piano Classes
-	{{MC}}: Okay, crazy proposal. What if I started playing piano? => piano_classes_intro
+	{{MC}}: Okay, crazy proposal. What if I started playing piano? =>< piano_classes_intro
 - Join the Karaoke plan [if check_if_waited("Inauguration")]
-	{{MC}}: Best way to start: by making friends => making_friends
+	{{MC}}: Best way to start: by making friends =>< making_friends
 - Go Home
 	{{MC}}: Ol' trusty "go home". Never fails. =>< go_home/standard
 => third_day

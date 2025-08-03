@@ -19,9 +19,11 @@ metadata/_custom_type_script = "uid://cpbl1y7cnrsx8"
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_3xxnu")
+transition_time = null
 
 [node name="Game" parent="." instance=ExtResource("1_f47da")]
 intro_dialogue = ExtResource("3_5e13l")
+transition_speed = null
 
 [node name="UI" parent="." instance=ExtResource("1_wbdts")]
 size_flags_horizontal = 3

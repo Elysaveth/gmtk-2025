@@ -251,7 +251,7 @@ text = "Play"
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_ypc04")
-text = "Settings"
+text = "Debug"
 
 [node name="Quit" type="Button" parent="Menus/BaseMenu/Main/Buttons"]
 layout_mode = 2

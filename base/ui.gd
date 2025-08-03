@@ -2,8 +2,10 @@ extends Control
 
 
 signal character_selected(username: String)
+signal debug_mode_on(scene: String)
 
 var character_name: String
+var debug_mode: bool = false
 
 
 func _on_play_pressed() -> void:
@@ -11,8 +13,14 @@ func _on_play_pressed() -> void:
 	$Menus/BaseMenu/Main/Username.show()
 
 func _on_settings_pressed() -> void:
-	pass # Replace with function body.
-
+	debug_mode = true
+	$Menus/BaseMenu/Main/Username/Username.placeholder_text = "Enter scene to load"
+	$Menus/BaseMenu/Main/Buttons.hide()
+	$Menus/BaseMenu/Main/Username.show()
+	if $Menus/BaseMenu/Pause.visible:
+		$Menus/BaseMenu/InGame.hide()
+		$Menus/BaseMenu/Pause.hide()
+		$Menus/BaseMenu/Main.show()
 
 func _on_quit_pressed() -> void:
 	pass # Replace with function body.
@@ -22,8 +30,13 @@ func _on_confirm_pressed() -> void:
 	if not $Menus/BaseMenu/Main/Username/Username.text:
 		$Menus/BaseMenu/Main/Username/EmptyWarning.show()
 	else:
-		character_name = $Menus/BaseMenu/Main/Username/Username.text
-		emit_signal("character_selected", character_name)
+		if not debug_mode:
+			character_name = $Menus/BaseMenu/Main/Username/Username.text
+			emit_signal("character_selected", character_name)
+			
+		else:
+			
+			emit_signal("debug_mode_on", $Menus/BaseMenu/Main/Username/Username.text)
 		$Menus/BaseMenu/Main.hide()
 		$Menus/BaseMenu/InGame.show()
 		$Menus/BaseMenu/Main/Username.hide()
